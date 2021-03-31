@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
 
-import FlowerForm from "./Components/FlowerForm";
+import FormDataResults from "./Components/FormDataResults";
 
 import {
   BrowserRouter as Router,
@@ -39,7 +39,7 @@ function App() {
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
             <Link className="navbar-brand" to={"/"}>
-              Assignment 4
+            Dinara Sharipova and Rohan Juneja: Lab 4
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ">
@@ -55,7 +55,7 @@ function App() {
 
 
             <Switch>
-              <Route path="/" render={() => <FlowerForm />} />
+              <Route path="/" render={() => <FormDataResults />} />
             </Switch>
           </div>
     </Router>

@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-function FlowerForm(props) {
+function FormDataResults(props) {
   const [sepal_length, setSepal_length] = useState("");
   const [sepal_width, setSepal_width] = useState("");
   const [petal_length, setPetal_length] = useState("");
@@ -69,9 +69,9 @@ function FlowerForm(props) {
       {showLoading === true ? (
         <div>
           <Jumbotron className="text-center">
-            <h3>Flower Form</h3>
+            <h2>Enter the data to predict the flower</h2>
           </Jumbotron>
-          <Container>
+          <Container className="mainForm">
             <Form onSubmit={sendData} className="col-md-10 offset-md-1">
               <Row>
                 <Form.Group as={Col} md="6">
@@ -79,7 +79,7 @@ function FlowerForm(props) {
                   <Form.Control
                     name="sepal_length"
                     id="sepal_length"
-                    placeholder=""
+                    placeholder="5.1"
                     type="number"
                     step="any"
                     onChange={(e) => setSepal_length(e.target.value)}
@@ -90,7 +90,7 @@ function FlowerForm(props) {
                   <Form.Control
                     name="sepal_width"
                     id="sepal_width"
-                    placeholder=""
+                    placeholder="3.5"
                     type="number"
                     step="any"
                     onChange={(e) => setSepal_width(e.target.value)}
@@ -103,7 +103,7 @@ function FlowerForm(props) {
                   <Form.Control
                     name="petal_length"
                     id="petal_length"
-                    placeholder=""
+                    placeholder="1.5"
                     type="number"
                     step="any"
                     onChange={(e) => setPetal_length(e.target.value)}
@@ -114,7 +114,7 @@ function FlowerForm(props) {
                   <Form.Control
                     name="petal_width"
                     id="petal_width"
-                    placeholder=""
+                    placeholder="1.2"
                     type="number"
                     step="any"
                     onChange={(e) => setPetal_width(e.target.value)}
@@ -127,7 +127,7 @@ function FlowerForm(props) {
                   <Form.Control
                     name="learning_rate"
                     id="learning_rate"
-                    placeholder="0.07"
+                    placeholder="0.08"
                     type="number"
                     step="any"
                     onChange={(e) => setLearning_rate(e.target.value)}
@@ -139,7 +139,7 @@ function FlowerForm(props) {
                     name="epochs"
                     id="epochs"
                     type="number"
-                    placeholder="200"
+                    placeholder="250"
                     step="any"
                     onChange={(e) => setEpochs(e.target.value)}
                   />
@@ -147,7 +147,7 @@ function FlowerForm(props) {
               </Row>
               <Row className="mt-3">
                 <Button className="btn btn-block" type="submit">
-                  Submit
+                  Predict
                 </Button>
               </Row>
             </Form>
@@ -157,15 +157,15 @@ function FlowerForm(props) {
         <div>
           <Container>
             <div className="jumbotron text-center">
-              <h2>Prediction Results</h2>
-              <h3 className="text-danger">Predicted Flower : {predictedFlowerName}</h3>
+              <h2>Results</h2>
+              <h3>Predicted Flower: <span>{predictedFlowerName}</span></h3>
             </div>
-            <div className="row">
+            <div className="row text-center">
               <div className="col-md-4 offset-md-4">
-                <table className="App-table table table-striped ">
-                  <thead className="thead-light">
+                <table className="App-table table table-striped table-dark table-hover">
+                  <thead className="thead-dark">
                     <tr>
-                      <th>Test Results</th>
+                      <th>Prediction Results</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -182,7 +182,7 @@ function FlowerForm(props) {
             </div>
               <div className="text-center col-md-4 offset-md-4">
                 <button className="btn btn-primary btn-block" onClick={goBack}>
-                  Back
+                  Go Back
                 </button>
               </div>
           </Container>
@@ -191,4 +191,4 @@ function FlowerForm(props) {
     </div>
   );
 }
-export default withRouter(FlowerForm);
+export default withRouter(FormDataResults);
