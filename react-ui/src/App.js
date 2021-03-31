@@ -16,23 +16,6 @@ import "./App.css";
 
 function App() {
 
-  //runs once after the first rendering of page
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     axios
-  //       .get(apiUrl)
-  //       .then((result) => {
-  //         console.log("result.data:", result.data);
-  //         setData(result.data);
-  //         setShowLoading(false);
-  //       })
-  //       .catch((error) => {
-  //         console.log("error in fetchData:", error);
-  //       });
-  //   };
-  //   fetchData();
-  // }, []);
-
   return (
     <Router>
       <div class="App">
@@ -41,19 +24,8 @@ function App() {
             <Link className="navbar-brand" to={"/"}>
             Dinara Sharipova and Rohan Juneja: Lab 4
             </Link>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav ">
-                {/* <li className="nav-item">
-                  <Link className="nav-link" to={"/"}>
-                    FlowerForm
-                  </Link>
-                </li> */}
-              </ul>
-            </div>
           </div>
         </nav>
-
-
             <Switch>
               <Route path="/" render={() => <FormDataResults />} />
             </Switch>

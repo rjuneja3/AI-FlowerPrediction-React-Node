@@ -20,17 +20,12 @@ exports.trainAndPredict = function (req, res) {
   var epoch = parseInt(req.body.epochs);
   var learning_rate = parseFloat(req.body.learning_rate);
   const responseData = [sepal_length, sepal_width, petal_length, petal_width];
-  console.log(responseData);
-  console.log("epoch: " + epoch);
-  console.log("learning_rate: " + learning_rate);
+
   //
   //tensor of features for training data
   // include only features, not the output
-  const trainingData = tf.tensor2d(
-    iris.map((item) => [
-      item.sepal_length,
-      item.sepal_width,
-      item.petal_length,
+  const trainingData = tf.tensor2d(iris.map((item) => [
+      item.sepal_length, item.sepal_width, item.petal_length,
       item.petal_width,
     ])
   );
@@ -41,8 +36,7 @@ exports.trainAndPredict = function (req, res) {
   // setosa:       1,0,0
   // virginica:    0,1,0
   // versicolor:   0,0,1
-  const outputData = tf.tensor2d(
-    iris.map((item) => [
+  const outputData = tf.tensor2d(iris.map((item) => [
       item.species === "setosa" ? 1 : 0,
       item.species === "virginica" ? 1 : 0,
       item.species === "versicolor" ? 1 : 0,
@@ -57,24 +51,20 @@ exports.trainAndPredict = function (req, res) {
   // build neural network using a sequential model
   const model = tf.sequential();
   //add the first layer
-  model.add(
-    tf.layers.dense({
+  model.add(tf.layers.dense({
       inputShape: [4], // four input neurons
       activation: "sigmoid",
       units: 5, //dimension of output space (first hidden layer)
     })
   );
   //add the hidden layer
-  model.add(
-    tf.layers.dense({
+  model.add(tf.layers.dense({
       inputShape: [5], //dimension of hidden layer
       activation: "sigmoid",
       units: 3, //dimension of final output (setosa, virginica, versicolor)
-    })
-  );
+    }));
   //add output layer
-  model.add(
-    tf.layers.dense({
+  model.add(tf.layers.dense({
       activation: "sigmoid",
       units: 3, //dimension of final output (setosa, virginica, versicolor)
     })
